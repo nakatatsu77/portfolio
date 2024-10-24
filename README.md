@@ -1,3 +1,6 @@
+### 画面遷移図
+Figma：https://www.figma.com/design/abY5VKaac5Yr2tSgFqkH78/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=8AlWgGDrFIOUbC83-1
+
 ## サービス概要
 職場でやらかした（ミスをした）時のエピソードを投稿、閲覧できるアプリです。
 
@@ -30,6 +33,7 @@
 * 投稿一覧
 * 投稿詳細
 * 投稿閲覧時のアニメーション
+* 生成AIにてやらかしエピソードに沿った画像を生成
 
 ### 本リリースまでに実装予定の機能
 * いいね機能
@@ -38,6 +42,6 @@
 * Xへのシェア機能
 
 ## 機能の実装方針予定
-フロントエンド: React TailwindCSS<br>
+フロントエンド: React TailwindCSS<br> <!-- MVPリリース後にReactで実装予定 -->
 バックエンド: Ruby on Rails<br>
 データベース: MySQL
