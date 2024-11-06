@@ -1,6 +1,9 @@
 ### 画面遷移図
 Figma：https://www.figma.com/design/abY5VKaac5Yr2tSgFqkH78/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=8AlWgGDrFIOUbC83-1
 
+### ER図
+drow.io：https://drive.google.com/file/d/1NR64s84bHf-Os4_J6Nfv7Wy1XiiwmJol/view?usp=sharing
+
 ## サービス概要
 職場でやらかした（ミスをした）時のエピソードを投稿、閲覧できるアプリです。
 
