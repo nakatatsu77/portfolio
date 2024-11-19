@@ -4,3 +4,83 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .book {
+    position: relative;
+    box-sizing: border-box;
+    width: 200px;
+    height: 250px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 10px;
+    background-color: #124f4b;
+    box-shadow: 2px 0 0 0 #124f4b, -2px 5px 1px 4px rgba(0,0,0,.2); /* 右開き用の影 */
+  
+    -webkit-perspective: 1000px;
+            perspective: 1000px;
+    -webkit-perspective-origin: 100% 150%; /* 右下を基点 */
+            perspective-origin: 100% 150%;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+  }
+  
+  .book-inbox {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px;
+    transition: all 1.8s ease;
+    transition-delay: .3s;
+    background-color: #fcfcfc;
+    box-shadow: 0 8px 0 0 #cecece, -200px 0 1px 0 rgba(0,0,0,.4) inset, 2px 0 0 0 #249690; /* 右開きの影 */
+  }
+  
+  .book:hover .book-inbox {
+    box-shadow: 0 8px 0 0 #afada3, 0 0 8px 0 rgba(0,0,0,0) inset, 2px 0 0 0 #249690; /* 右開きの影変更 */
+  }
+  
+  .book::before, .book::after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% - 10px);
+    -webkit-transition: all 2.5s ease;
+            transition: all 2.5s ease;
+    -webkit-transform-origin: 100% 0; /* 右を基点に設定 */
+            transform-origin: 100% 0;
+  }
+  
+  .book::before {
+    font-size: 3em;
+    content: 'Book';
+    -webkit-transform: rotateY(0deg) translateZ(1px);
+            transform: rotateY(0deg) translateZ(1px);
+    text-align: center;
+    color: #fff;
+    background-color: #249690;
+    box-shadow: 0 2px 0 0 #124f4b; /* 右側の影 */
+    text-shadow: 1px -1px 0 rgba(0,0,0,.4);
+  }
+  
+  .book::after {
+    content: '';
+    -webkit-transform: rotateY(0deg) translateZ(0px);
+            transform: rotateY(0deg) translateZ(0px);
+    background-color: #033330;
+  }
+  
+  .book:hover::before, .book:active::before {
+    -webkit-transform: rotateY(350deg) translateZ(1px); /* 回転を右方向に変更 */
+            transform: rotateY(350deg) translateZ(1px);
+  }
+  
+  .book:hover::after {
+    -webkit-transform: rotateY(350deg) translateZ(0px); /* 回転を右方向に変更 */
+            transform: rotateY(350deg) translateZ(0px);
+    background-color: #38b7b0;
+  }
+  
+}

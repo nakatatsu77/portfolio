@@ -5,9 +5,10 @@
       <%= image_tag 'yarakashi.png', size: "150x20" %>
       <% end %>
     </div>
-    <div class="font-handwritten flex-none">
-      <ul class="menu menu-horizontal px-1 text-xl">
+    <div class="font-body font-bold tracking-tighter flex-none">
+      <ul class="menu menu-horizontal px-1 text-base">
         <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %></li>
+        <li><%= link_to '投稿一覧', posts_path %></li>
       </ul>
     </div>
   </div>

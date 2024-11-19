@@ -1,0 +1,17 @@
+<div class="mx-4 my-4 flex-grow">
+  <div class="container relative m-auto">
+    <h1 class="font-handwritten text-3xl text-center">みんなのにっき</h1>
+    <%
+=begin%>
+    <button class="btn btn-primary text-white"><%= link_to 'みんなのにっき', "#" %></button>
+    <%
+=end%>
+  </div>
+  <div class="my-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-20">
+    <% if @posts.present? %>
+    <%= render @posts %>
+    <% else %>
+    <div class="mb-3">掲示板がありません</div>
+    <% end %>
+  </div>
+</div>
