@@ -1,0 +1,14 @@
+<div class="mx-4 my-4">
+  <div class="">
+    <div class="text-3xl text-center">
+      <h1 class="font-handwritten">にっきをかいてみよう</h1>
+      <%= form_with model: @post, class: "new_post" do |f| %>
+      <div class="mb-3">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "vertical-rl" %>
+      </div>
+      <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
