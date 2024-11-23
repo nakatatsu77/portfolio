@@ -1,5 +1,3 @@
-import plugin from "tailwindcss/plugin";
-
 module.exports = {
   content: [
     "./app/views/**/*.html.erb",
@@ -43,6 +41,7 @@ module.exports = {
           "primary": "#88C273",
           "secondary": "#FFB0B0",
           "accent": "#FFD09B",
+          "neutral": "#FEFEFE",
         },
       },
     ],

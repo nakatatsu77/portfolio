@@ -1,14 +1,15 @@
-<div class="mx-4 my-4">
+<div class="text-3xl text-center">
+  <h1 class="font-handwritten">にっきをかいてみよう</h1>
+</div>
+<div class="flex flex-col mx-auto max-w-lg text-center text-gray-900 bg-[#fefefe] border-2 border-primary shadow-xl">
   <div class="">
-    <div class="text-3xl text-center">
-      <h1 class="font-handwritten">にっきをかいてみよう</h1>
-      <%= form_with model: @post, class: "new_post" do |f| %>
-      <div class="mb-3">
-        <%= f.label :body %>
-        <%= f.text_area :body, class: "vertical-rl" %>
-      </div>
-      <%= f.submit nil, class: "btn btn-primary" %>
-      <% end %>
+    <%= image_tag "post_placeholder.png", class: "card-img-top", width: "300", height:"200" %>
+    <%= form_with model: @post, class: "new_post" do |f| %>
+    <div class="mb-3">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "vertical-rl" %>
     </div>
+    <%= f.submit nil, class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
