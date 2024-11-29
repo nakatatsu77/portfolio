@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: [
     "./app/views/**/*.html.erb",
@@ -30,7 +32,7 @@ module.exports = {
       };
       addUtilities(newUtilities);
     }),
-   require('daisyui'),
+    require("daisyui"),
   ],
   daisyui: {
     themes: [
