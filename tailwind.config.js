@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: [
     "./app/views/**/*.html.erb",
@@ -11,16 +13,39 @@ module.exports = {
       body: ["Zen Kaku Gothic New"],
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".horizontal-tb": {
+          writingMode: "horizontal-tb",
+        },
+        ".vertical-rl": {
+          writingMode: "vertical-rl",
+          "-ms-writing-mode": "tb-rl",
+        },
+        ".vertical-lr": {
+          writingMode: "vertical-lr",
+        },
+        ".rtl": {
+          direction: "rtl",
+        },
+      };
+      addUtilities(newUtilities);
+    }),
+    require("daisyui"),
+  ],
   daisyui: {
     themes: [
       {
         mytheme: {
-          "base-200": "#FFEDCC",
+          "base-300": "#88C273",
+          "base-200": "#88C273",
           "base-100": "#FFF8DC",
           "primary": "#88C273",
           "secondary": "#FFB0B0",
           "accent": "#FFD09B",
+          "neutral": "#CFCFCF",
+          "neutral-content": "#FEFEFE",
         },
       },
     ],

@@ -1,0 +1,26 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="post-id-<%= post.id %>">
+    <div class="book">
+      <div class="book-inbox">
+        <h4 class="card-title flex-col">
+          <% if post.image.present? %>
+          <%= image_tag post.image.image_url.url, class: "card-img-top", width: "300", height:"200" %>
+          <% else %>
+          <%= image_tag "post_placeholder.png", class: "card-img-top", width: "300", height:"200" %>
+          <% end %>
+          <%= link_to post.user.name, '#' %>
+        </h4>
+        <div>
+          <%= link_to '#', id: 'button-edit-#{post.id}' do %>
+          <% end %>
+          <%= link_to '#', id: 'button-delete-#{post.id}', method: :delete, data: {confirm: ''} do %>
+          <% end %>
+        </div>
+        <ul class="list-inline">
+          <li><%= l post.created_at, format: :short %></li>
+          <li><%= post.body %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
