@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_16_143709) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_25_100020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "images", force: :cascade do |t|
+    t.string "image_url"
+    t.boolean "is_generated_by_ai", default: false, null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_images_on_post_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "body", null: false
@@ -32,5 +43,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_16_143709) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "images", "posts"
+  add_foreign_key "images", "users"
   add_foreign_key "posts", "users"
 end

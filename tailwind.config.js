@@ -1,4 +1,4 @@
-import plugin from "tailwindcss/plugin";
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: [
@@ -32,17 +32,20 @@ module.exports = {
       };
       addUtilities(newUtilities);
     }),
-   require('daisyui'),
+    require("daisyui"),
   ],
   daisyui: {
     themes: [
       {
         mytheme: {
-          "base-200": "#FFEDCC",
+          "base-300": "#88C273",
+          "base-200": "#88C273",
           "base-100": "#FFF8DC",
           "primary": "#88C273",
           "secondary": "#FFB0B0",
           "accent": "#FFD09B",
+          "neutral": "#CFCFCF",
+          "neutral-content": "#FEFEFE",
         },
       },
     ],
