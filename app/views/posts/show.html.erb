@@ -7,7 +7,7 @@
       <div class="mb-8 w-full h-96 border-2">
         <%= image_tag @post.image.image_url.url, class: "w-full h-full object-cover" %>
       </div>
-      <ul class="vertical-rl resize-none text-2xl tracking-widest px-3 w-full h-72 break-all">
+      <ul class="vertical-rl resize-none text-2xl tracking-widest px-3 w-full h-72 break-all overflow-scroll">
         <li><%= l @post.created_at, format: :short %></li>
         <li><%= @post.user.name %></li>
         <li><%= @post.body %></li>
