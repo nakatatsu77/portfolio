@@ -42,10 +42,10 @@ gem "carrierwave", "~> 3.0"
 
 gem "aws-sdk-s3", require: false
 
-gem 'fog-aws'
+gem "fog-aws"
 
 # env
-gem 'dotenv-rails'
+gem "dotenv-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
