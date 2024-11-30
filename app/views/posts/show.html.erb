@@ -1,0 +1,17 @@
+<section class="mx-4 my-4">
+  <div class="text-3xl mb-4">
+    <h1 class="font-handwritten">にっきのしょうさい</h1>
+  </div>
+  <div class="border-2 border-neutral mx-auto max-w-2xl bg-neutral-content">
+    <div class="mx-8 my-8">
+      <div class="mb-8 w-full h-96 border-2">
+        <%= image_tag @post.image.image_url.url, class: "w-full h-full object-cover" %>
+      </div>
+      <ul class="vertical-rl resize-none text-2xl tracking-widest px-3 w-full h-72 break-all">
+        <li><%= l @post.created_at, format: :short %></li>
+        <li><%= @post.user.name %></li>
+        <li><%= @post.body %></li>
+      </ul>
+    </div>
+  </div>
+</section>

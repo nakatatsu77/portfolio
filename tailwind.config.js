@@ -38,8 +38,7 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          "base-300": "#88C273",
-          "base-200": "#88C273",
+          "base-200": "#FFEDCC",
           "base-100": "#FFF8DC",
           "primary": "#88C273",
           "secondary": "#FFB0B0",

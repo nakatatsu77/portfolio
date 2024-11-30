@@ -6,8 +6,12 @@
       <p class="font-body py-6 text-xl">
         バイトでのやらかしエピソード<br>をシェアするアプリです
       </p>
-      <button class="btn btn-primary text-white">日記を書く</button>
-      <button class="btn btn-secondary text-white">日記を見る</button>
+      <button class="btn btn-primary text-white">
+        <%= link_to '日記を書く', new_post_path %>
+      </button>
+      <button class="btn btn-secondary text-white">
+        <%= link_to '日記を見る', posts_path %>
+      </button>
     </div>
   </div>
   <h2 class="font-handwritten text-4xl text-center mb-10">にっきのかきかた✏️</h2>
