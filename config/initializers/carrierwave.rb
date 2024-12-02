@@ -4,7 +4,7 @@ require "carrierwave/storage/fog"
 
 CarrierWave.configure do |config|
     config.storage :fog
-    config.fog_provider = "fog/aws"
+    # config.fog_provider = "fog/aws" エラー回避のため
     config.fog_directory  = "runteq-my-portfolio"
     config.fog_credentials = {
       provider: "AWS",
