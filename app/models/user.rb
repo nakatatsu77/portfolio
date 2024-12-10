@@ -9,4 +9,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_one :image, dependent: :destroy
+
+  def own?(object)
+    id == object&.user_id
+  end
 end
