@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user)
+    @image_url = session[:image_url]
+    @error = session[:error]
   end
 
   def new
@@ -13,6 +15,23 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.image.user = current_user if @post.image.present?
+
+    prompt = params[:prompt]
+    response = OpenAIClient.images.generate(
+    parameters: {
+      model: "dall-e-3",
+      prompt: prompt,
+      size: "1024x1024",
+      n: 1
+    }
+  )
+    if response.key?("error")
+      session[:error] = response["error"]
+    else
+      session[:image_url] = response["data"][0]["url"]
+      session[:error] = nil
+    end
+
     if @post.save
       redirect_to posts_path, success: t("defaults.flash_message.created", item: Post.model_name.human)
     else
@@ -49,6 +68,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, image_attributes: [ :image_url, :image_url_cache, :is_generated_by_ai, :id, :_destroy ]) # image_attributesによってImageモデルのデータを保存、更新できる
+    params.require(:post).permit(:title, :body, image_attributes: [ :image_url, :image_url_cache, :is_generated_by_ai, :prompt, :id, :_destroy ]) # image_attributesによってImageモデルのデータを保存、更新できる
   end
 end
