@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.image.user = current_user if @post.image.present?
 
-    prompt = params[:prompt]
+    prompt = params[:post][:prompt]
     response = OpenAIClient.images.generate(
     parameters: {
       model: "dall-e-3",
