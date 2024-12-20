@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user)
-    @image_url = session[:image_url]
-    @error = session[:error]
   end
 
   def new
@@ -13,24 +11,42 @@ class PostsController < ApplicationController
   end
 
   def create
+    Rails.logger.debug "Full Params: #{params.inspect}"
     @post = current_user.posts.build(post_params)
-    @post.image.user = current_user if @post.image.present?
+    # @post.image.user = current_user if @post.image.present?
 
-    prompt = params[:post][:prompt]
-    response = OpenAIClient.images.generate(
-    parameters: {
-      model: "dall-e-3",
-      prompt: prompt,
-      size: "1024x1024",
-      n: 1
-    }
-  )
-    if response.key?("error")
-      session[:error] = response["error"]
+    prompt = @post.body # bodyの内容をpromptとして利用する
+    if prompt.present?
+      begin
+        response = OpenAIClient.images.generate(
+          parameters: {
+            model: "dall-e-3",
+            prompt: prompt,
+            size: "1024x1024",
+            n: 1
+          }
+        )
+  
+        if response.key?("data")
+          image_url = response["data"][0]["url"]
+          @post.build_image(image_url: image_url, user: current_user)
+        else
+          flash.now[:danger] = "画像生成に失敗しました: #{response['error']['message']}"
+          render :new, status: :unprocessable_entity
+          return
+        end
+      rescue => e
+        Rails.logger.error "OpenAI API Error: #{e.message}"
+        flash.now[:danger] = "画像生成中にエラーが発生しました。"
+        render :new, status: :unprocessable_entity
+        return
+      end
     else
-      session[:image_url] = response["data"][0]["url"]
-      session[:error] = nil
+      flash.now[:danger] = "本文を入力してください。"
+      render :new, status: :unprocessable_entity
+      return
     end
+    Rails.logger.debug "Filtered Post Params: #{post_params.inspect}"
 
     if @post.save
       redirect_to posts_path, success: t("defaults.flash_message.created", item: Post.model_name.human)
@@ -68,6 +84,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, image_attributes: [ :image_url, :image_url_cache, :is_generated_by_ai, :prompt, :id, :_destroy ]) # image_attributesによってImageモデルのデータを保存、更新できる
+    params.require(:post).permit(:title, :body, image_attributes: [ :image_url, :image_url_cache, :is_generated_by_ai, :id, :_destroy ]) # image_attributesによってImageモデルのデータを保存、更新できる
   end
 end
