@@ -4,5 +4,5 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one :image, dependent: :destroy
   # app/views/posts/new.html.erbでネストされたフォームを動作させる
-  accepts_nested_attributes_for :image
+  accepts_nested_attributes_for :image, allow_destroy: true
 end
