@@ -1,6 +1,6 @@
 <section class="mx-4 my-4">
   <div class="text-3xl mb-4">
-    <h1 class="font-handwritten">にっきをかいてみよう</h1>
+    <h1 class="font-handwritten">にっきのへんしゅう</h1>
   </div>
   <div class="border-2 border-neutral mx-auto max-w-2xl bg-neutral-content">
     <div class="mx-8 my-8">
@@ -13,8 +13,7 @@
       <div class="mb-3">
         <%= f.text_area :body, class: "vertical-rl resize-none focus:outline-none text-2xl tracking-widest px-3 overflow-hidden w-full h-72 break-all overflow-scroll", placeholder:"やらかしエピソード" %>
       </div>
-      <%= f.submit "投稿する", class: "btn btn-primary text-white" %>
-      <%= button_tag "画像生成して投稿する", name: "generate_image", value: "true", class: "btn btn-secondary text-white" %>
+      <%= f.submit "更新", class: "btn btn-primary text-white" %>
       <% end %>
     </div>
   </div>
