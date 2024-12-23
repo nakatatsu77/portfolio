@@ -12,12 +12,29 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    @post.image.user = current_user if @post.image.present?
+    # 画像生成ロジックをスキップし、通常の投稿を処理
+    if @post.image.present? && !params[:generate_image].present?
+      @post.image.user = current_user
+    end
+
+    # 「画像を生成して投稿する」ボタンが押された場合
+    if params[:generate_image].present? && @post.body.present?
+      # bodyの内容をプロンプトとして渡す
+      generated_image_url = OpenaiImageGenerator.generate_image(@post.body)
+      if generated_image_url
+        # Postに関連付けられたImageオブジェクトのimage_urlを設定
+        @post.build_image(remote_image_url: generated_image_url, is_generated_by_ai: true, user: current_user)
+      else
+        flash.now[:danger] = "画像生成に失敗しました。もう一度お試しください。"
+        render :new and return
+      end
+    end
+
     if @post.save
       redirect_to posts_path, success: t("defaults.flash_message.created", item: Post.model_name.human)
     else
-      Rails.logger.debug "Post Errors: #{@post.errors.full_messages}" # エラーをログに表示
-      flash.now[:danger] = @post.errors.full_messages.join(", ") # エラーメッセージを表示
+      Rails.logger.debug "Post Errors: #{@post.errors.full_messages}"
+      flash.now[:danger] = @post.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end

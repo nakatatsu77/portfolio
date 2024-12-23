@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_25_100020) do
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
-    t.string "image_url"
+    t.text "image_url"
     t.boolean "is_generated_by_ai", default: false, null: false
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
