@@ -2,19 +2,19 @@
   <div class="hero-content mx-auto flex-col lg:flex-row mb-10">
     <%= image_tag 'top-image.png', size: "400x400" %>
     <div>
-      <h1 class="font-handwritten text-5xl">バイトやらかしにっき</h1>
+      <h1 class="font-handwritten text-5xl"><%= t('.title') %></h1>
       <p class="font-body py-6 text-xl">
         バイトでのやらかしエピソード<br>をシェアするアプリです
       </p>
       <button class="btn btn-primary text-white">
-        <%= link_to '日記を書く', new_post_path %>
+        <%= link_to t('.write_a_diary'), new_post_path %>
       </button>
       <button class="btn btn-secondary text-white">
-        <%= link_to '日記を見る', posts_path %>
+        <%= link_to t('.view_diary'), posts_path %>
       </button>
     </div>
   </div>
-  <h2 class="font-handwritten text-4xl text-center mb-10">にっきのかきかた✏️</h2>
+  <h2 class="font-handwritten text-4xl text-center mb-10"><%= t('.heading') %></h2>
   <div class="hero-content mx-auto flex-col lg:flex-row">
     <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-base-100 rounded-lg border-2 border-accent shadow-xl">
       <h3 class="mb-4 text-xl font-semibold">

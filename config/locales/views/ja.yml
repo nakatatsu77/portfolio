@@ -7,6 +7,12 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  static_pages:
+    top:
+      title: バイトやらかしにっき
+      heading: にっきのかきかた✏️
+      write_a_diary: 日記を書く
+      view_diary: 日記を見る
   user_sessions:
     new:
       title: ログイン
@@ -16,6 +22,7 @@ ja:
   users:
     new:
       title: ユーザーとうろく
+      signup: 登録
       to_login_page: ログインページへ
   header:
     login: ログイン
