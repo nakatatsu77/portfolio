@@ -24,7 +24,7 @@
         <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
         <i class="btn">編集</i>
         <% end %>
-        <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } do %>
+        <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
         <i class="btn">削除</i>
         <% end %>
       </div>
