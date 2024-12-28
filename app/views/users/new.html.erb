@@ -1,6 +1,6 @@
 <div class='container mx-auto'>
   <div class='text-center mt-6'>
-    <h1 class='text-2xl font-handwritten font-lilita'>ユーザーとうろく</h1>
+    <h1 class='text-2xl font-handwritten font-lilita'><%= t('.title') %></h1>
   </div>
   <%= form_with model: @user do |f| %>
   <%
@@ -22,11 +22,11 @@
   <%= f.password_field :password_confirmation, class: 'input input-bordered border-2 input-accent form-control mb-6 w-full md:w-1/2 mx-auto' %>
 
   <div class='mx-auto md:w-1/2'>
-    <%= f.submit '登録', class: 'btn btn-primary text-white w-full mt-6 mb-6 mx-auto' %>
+    <%= f.submit t('.signup'), class: 'btn btn-primary text-white w-full mt-6 mb-6 mx-auto' %>
   </div>
   <% end %>
 
   <div class='text-center mb-6'>
-    <%= link_to 'ログインページへ', login_path %>
+    <%= link_to t('.to_login_page'), login_path %>
   </div>
 </div>
