@@ -1,8 +1,8 @@
 <div class="border-2 mb-3">
   <div id="post-id-<%= post.id %>">
-    <div class="book">
+    <div class="book" data-username="<%= post.user.name %>">
+      <%= link_to(post_path(post)) do %>
       <div class="book-inbox">
-        <%= link_to(post_path(post)) do %>
         <h4 class="card-title flex-col w-full h-28 mb-3 bg-cover">
           <% if post.image&.image_url.present? %>
           <%= image_tag post.image.image_url.url, class: "w-full h-full object-cover" %>
@@ -10,7 +10,6 @@
           <%= image_tag "post_placeholder.png", class: "w-full h-full object-cover"%>
           <% end %>
         </h4>
-        <% end %>
         <div class="vertical-rl overflow-hidden  w-full text-xs">
           <ul class="max-h-[100px] overflow-hidden break-words p-1">
             <li><%= l post.created_at, format: :short %></li>
@@ -19,12 +18,13 @@
           </ul>
         </div>
       </div>
+      <% end %>
       <% if current_user.own?(post) %>
       <div class='ms-auto'>
         <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
         <i class="btn">編集</i>
         <% end %>
-        <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } do %>
+        <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
         <i class="btn">削除</i>
         <% end %>
       </div>

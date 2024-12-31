@@ -38,6 +38,8 @@ gem "bootsnap", require: false
 
 gem "sorcery"
 
+gem "rails-i18n", "~> 7.0.0"
+
 gem "carrierwave", "~> 3.0"
 
 gem "aws-sdk-s3", require: false
@@ -58,7 +60,7 @@ group :development, :test do
 
   gem "pry-rails"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem "brakeman", "~> 7.0.0", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
