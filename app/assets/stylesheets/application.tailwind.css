@@ -54,8 +54,9 @@
   }
   
   .book::before {
-    font-size: 3em;
-    content: 'Book';
+    font-size: 2em;
+    padding-top: 10px;
+    content: attr(data-username);
     -webkit-transform: rotateY(0deg) translateZ(1px);
             transform: rotateY(0deg) translateZ(1px);
     text-align: center;
