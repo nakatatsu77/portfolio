@@ -40,7 +40,7 @@ gem "sorcery"
 
 gem "rails-i18n", "~> 7.0.0"
 
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 
 gem "aws-sdk-s3", require: false
 
