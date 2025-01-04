@@ -2,30 +2,29 @@
   <div class="text-3xl mb-4">
     <h1 class="font-handwritten"><%= t('.title') %></h1>
   </div>
-  <div class="border-2 border-neutral mx-auto max-w-2xl bg-neutral-content">
+  <div class="border-2 border-neutral mx-auto max-w-5xl bg-neutral-content">
     <div class="mx-8 my-8">
-      <div class="mb-8 w-full h-96 border-2">
+      <div class="mb-8 w-full h-auto border-2">
         <% if @post.image&.image_url.present? %>
-        <%= image_tag @post.image.image_url.url, class: "w-full h-full object-cover" %>
+        <%= image_tag @post.image.image_url.url, class: "w-full max-h-[560px] object-cover" %>
         <% else %>
         <%= image_tag "post_placeholder.png", class: "w-full h-full object-cover"%>
         <% end %>
       </div>
-      <ul class="vertical-rl resize-none text-2xl tracking-widest px-3 w-full h-72 break-all overflow-scroll">
-        <li><%= l @post.created_at, format: :short %></li>
-        <li><%= @post.user.name %></li>
+      <ul class="vertical-rl resize-none text-2xl tracking-widest px-3 w-full h-96 break-all overflow-scroll">
         <li><%= @post.body %></li>
-        <% if current_user.own?(@post) %>
-        <div class='ms-auto'>
-          <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
-          <i class="btn">編集</i>
-          <% end %>
-          <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
-          <i class="btn">削除</i>
-          <% end %>
-        </div>
-        <% end %>
+        <li class="text-end pr-8"><%= @post.user.name %></li>
       </ul>
+      <% if current_user.own?(@post) %>
+      <div class='ms-auto'>
+        <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
+        <i class="btn">編集</i>
+        <% end %>
+        <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+        <i class="btn">削除</i>
+        <% end %>
+      </div>
+      <% end %>
     </div>
   </div>
 </section>

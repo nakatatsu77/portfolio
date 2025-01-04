@@ -1,4 +1,4 @@
-<div class="border-2 mb-3">
+<div class="mb-3">
   <div id="post-id-<%= post.id %>">
     <div class="book" data-username="<%= post.user.name %>">
       <%= link_to(post_path(post)) do %>
@@ -12,9 +12,8 @@
         </h4>
         <div class="vertical-rl overflow-hidden  w-full text-xs">
           <ul class="max-h-[100px] overflow-hidden break-words p-1">
-            <li><%= l post.created_at, format: :short %></li>
-            <li><%= post.user.name %></li>
             <li><%= post.body %></li>
+            <li class="text-end pr-2"><%= post.user.name %></li>
           </ul>
         </div>
       </div>
