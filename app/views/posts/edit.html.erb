@@ -2,7 +2,7 @@
   <div class="text-3xl mb-4">
     <h1 class="font-handwritten"><%= t('.title') %></h1>
   </div>
-  <div class="border-2 border-neutral mx-auto max-w-2xl bg-neutral-content">
+  <div class="border-2 border-neutral mx-auto max-w-5xl bg-neutral-content">
     <div class="mx-8 my-8">
       <%= form_with model: @post, local: true, html: { multipart: true } do |f| %>
       <div class="mb-8 w-auto h-96 border-2">
@@ -11,7 +11,7 @@
         <% end %>
       </div>
       <div class="mb-3">
-        <%= f.text_area :body, class: "vertical-rl resize-none focus:outline-none text-2xl tracking-widest px-3 overflow-hidden w-full h-72 break-all overflow-scroll", placeholder:"やらかしエピソード" %>
+        <%= f.text_area :body, class: "vertical-rl resize-none focus:outline-none text-2xl tracking-widest px-3 overflow-hidden w-full h-96 break-all overflow-scroll", placeholder:"やらかしエピソード" %>
       </div>
       <%= f.submit "更新", class: "btn btn-primary text-white" %>
       <% end %>
