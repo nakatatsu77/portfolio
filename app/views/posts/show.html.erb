@@ -6,7 +6,7 @@
     <div class="mx-8 my-8">
       <div class="mb-8 w-full h-auto border-2">
         <% if @post.image&.image_url.present? %>
-        <%= image_tag @post.image.image_url.url, class: "w-full max-h-[560px] object-cover" %>
+        <%= image_tag @post.image.image_url.url, class: "w-full h-auto object-cover" %>
         <% else %>
         <%= image_tag "post_placeholder.png", class: "w-full h-full object-cover"%>
         <% end %>
