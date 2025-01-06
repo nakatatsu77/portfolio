@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
+
+  get "statistic_pages/policy" => "static_pages#policy", as: :policy
+  get "statistic_pages/terms" => "static_pages#terms", as: :terms
 end
