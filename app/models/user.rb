@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_one :image, dependent: :destroy
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 
   def own?(object)
     id == object&.user_id
