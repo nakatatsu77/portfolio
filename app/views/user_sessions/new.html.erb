@@ -17,6 +17,7 @@
 
   <div class='mx-auto md:w-1/2'>
     <%= f.submit t('.login'), class: 'btn btn-primary text-white w-full mt-6 mb-6 mx-auto' %>
+    <%= link_to 'Login with Google', auth_at_provider_path(provider: :google) %>
   </div>
   <% end %>
 
