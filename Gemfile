@@ -54,6 +54,11 @@ gem "ruby-openai"
 
 gem "config"
 
+# OGP画像を実装するためのGem
+gem "mini_magick"
+
+gem "meta-tags", require: "meta_tags"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
