@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  # 設定したprepare_meta_tagsをprivateにあってもpostコントローラー以外にも使えるようにする
+  helper_method :prepare_meta_tags
+
   def index
     @posts = Post.includes(:user)
   end
@@ -41,6 +44,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # メタタグを設定する。
+    prepare_meta_tags(@post)
   end
 
   def edit
@@ -68,4 +73,23 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, image_attributes: [ :image_url, :image_url_cache, :is_generated_by_ai, :id, :_destroy ]) # image_attributesによってImageモデルのデータを保存、更新できる
   end
+
+  def prepare_meta_tags(post)
+        # このimage_urlにMiniMagickで設定したOGPの生成した合成画像を代入する
+        image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(post.body)}"
+        set_meta_tags og: {
+                        site_name: "バイトやらかしにっき",
+                        title: post.body,
+                        description: "職場でのやらかしエピソードの投稿です",
+                        type: "website",
+                        url: request.original_url,
+                        image: image_url,
+                        locale: "ja-JP"
+                      },
+                      twitter: {
+                        card: "summary_large_image",
+                        site: "@https://x.com/WebTatsuya0707",
+                        image: image_url
+                      }
+      end
 end
